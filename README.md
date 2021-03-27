@@ -20,3 +20,7 @@ yarn add clrcon
 }
 ```
 
+## 依赖
+
+- **Node.js** v12.20.0
+- **commander** v7.2.0
