@@ -4,7 +4,7 @@ const pkg = require('./package.json')
 const api = require('./index.js')
 
 if (process.argv.length <= 2) {
-  api.clearLog()
+  void api.clearLog('src')
 } else {
   program
     .version(pkg.version, '-v, --version', 'display version information')
@@ -13,7 +13,7 @@ if (process.argv.length <= 2) {
   program.parse();
 
   const assign = program.opts().assign
-  api.clearLog(...assign)
+  api.dirLoop(assign)
 }
 
 
