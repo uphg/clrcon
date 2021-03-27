@@ -1,6 +1,6 @@
 # Clrcon
 
-使用 Node.js 清除指定目录下所有文件中的 console
+使用 Node.js 清除指定目录下所有文件中的 `console.log()`，使用前请先看[注意事项](#注意事项)
 
 ## 安装
 
@@ -58,3 +58,22 @@ clrcon -a public src dist
 
 - **Node.js** v12.20.0
 - **commander** v7.2.0
+
+## 注意事项
+
+该脚本无法清除以下案例的代码
+
+```js
+// 1. 把 "console.log(" 做为字符串使用，会导致整个文件内容误删
+const a = 'console.log('
+
+// 2. 在 console 中添加 ")"，会跳过该行 console
+console.log(')')
+console.log('(' + ')')
+console.log('(')
+
+// 3. 在 console 中添加以下字符串，可能会导致该行后内容误删
+console.log('console.log(')
+```
+
+以上案例还包括双引号字符串("")、以及模板字符串(\`\`)
