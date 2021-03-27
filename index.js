@@ -13,7 +13,7 @@ const util = {
   },
   read(dir) {
     return new Promise((resolve, reject) => {
-      fs.readFile(dir, 'utf-8', (e, content) => {
+      fs.readFile(dir, 'utf-8', (error, content) => {
         const result = filterLog(content)
         if (!result) return false
         resolve(result)
@@ -36,8 +36,8 @@ async function clearLog(path) {
   fileList.forEach(fileName => {
     const fileDir = p.join(filePath, fileName)
     // stat: get file information
-    fs.stat(fileDir, async (err, state) => {
-      if (err) return console.log(err)
+    fs.stat(fileDir, async (error, state) => {
+      if (error) return console.log(error)
 
       const isFile = state.isFile()
       const isDir = state.isDirectory()
