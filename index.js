@@ -15,7 +15,7 @@ const util = {
     return new Promise((resolve, reject) => {
       fs.readFile(dir, 'utf-8', (e, content) => {
         const result = filterLog(content)
-        if (!result) return reject('文件内容为空')
+        if (!result) return false
         resolve(result)
       })
     })
