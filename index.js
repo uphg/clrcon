@@ -30,7 +30,7 @@ const util = {
   }
 }
 
-async function clearLog(path) {
+async function gitFilePath(path) {
   const filePath = p.resolve(path);
   const fileList = await util.dir(filePath)
   fileList.forEach(fileName => {
@@ -46,7 +46,7 @@ async function clearLog(path) {
         const result = await util.read(fileDir)
         await util.write(fileDir, result)
       } else if (isDir) {
-        await clearLog(fileDir)
+        await gitFilePath(fileDir)
       }
     })
   })
@@ -59,8 +59,8 @@ function dirLoop(param) {
   } else {
     pathList = [...param]
   }
-  pathList.forEach(path => clearLog(path))
+  pathList.forEach(path => gitFilePath(path))
 }
 
-module.exports.clearLog = clearLog
+module.exports.gitFilePath = gitFilePath
 module.exports.dirLoop = dirLoop

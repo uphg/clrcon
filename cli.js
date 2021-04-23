@@ -4,7 +4,7 @@ const pkg = require('./package.json')
 const api = require('./index.js')
 
 if (process.argv.length <= 2) {
-  void api.clearLog('src')
+  void api.gitFilePath('src')
 } else {
   program
     .version(pkg.version, '-v, --version', 'display version information')
