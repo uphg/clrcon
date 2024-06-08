@@ -33,8 +33,8 @@ const util = {
 async function gitFilePath(path) {
   const filePath = p.resolve(path);
   const fileList = await util.dir(filePath)
-  fileList.forEach(fileName => {
-    const fileDir = p.join(filePath, fileName)
+  fileList.forEach(name => {
+    const fileDir = p.join(filePath, name)
     // stat: get file information
     fs.stat(fileDir, async (error, state) => {
       if (error) return console.log(error)
